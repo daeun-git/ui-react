@@ -1,4 +1,5 @@
 import Gnb from "./gnb";
+import "./globals.scss";
 
 export const metadata = {
   title: "UI React | daeun",

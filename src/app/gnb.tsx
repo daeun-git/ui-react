@@ -55,7 +55,7 @@ const ParentGnbItem = ({
 }) => {
   const open = children.includes(currentPath);
   return (
-    <li className={classNames("parent", `item-${children.length}`, { open })}>
+    <li className={classNames("parent", `items-${children.length}`, { open })}>
       <Link href={link}>{name}</Link>
       <ul className="subRoutes">
         {children.map((r) => {
@@ -70,15 +70,20 @@ const ParentGnbItem = ({
 };
 
 const ChildGnbItem = ({
-  route: { link, name },
+  route: { name, link, children },
   currentPath,
 }: {
   route: ChildRoute;
   currentPath: ROUTE_PATH;
 }) => {
   return (
-    <li className={classNames({ active: link === currentPath })}>
-      <Link href={link}>{name}</Link>
+    <li
+      className={classNames({
+        active: link === currentPath,
+        disabled: !children,
+      })}
+    >
+      {children ? <Link href={link}>{name}</Link> : name}
     </li>
   );
 };
