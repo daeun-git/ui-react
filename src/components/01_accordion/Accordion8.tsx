@@ -38,7 +38,7 @@ const Accordion8 = () => {
     <>
       <h3>
         #8. React
-        <sub>여러 개가 펼쳐지는 아코디언 + 검색가능 (details태그)</sub>
+        <sub>아코디언 + 검색가능 (details태그)</sub>
       </h3>
       <ul className={cx("container")}>
         {data.map((d, i) => (

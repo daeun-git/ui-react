@@ -18,10 +18,12 @@ const AccordionItem = ({
   const descRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let ref = descRef.current;
-    ref?.addEventListener("beforematch", toggle);
+    if (descRef.current) {
+      descRef.current.addEventListener("beforematch", toggle);
+    }
     return () => {
-      ref?.removeEventListener("beforematch", toggle);
+      if (descRef.current)
+        descRef.current.removeEventListener("beforematch", toggle);
     };
   }, [toggle]);
 
@@ -30,7 +32,11 @@ const AccordionItem = ({
       <div className={cx("tab")} onClick={toggle}>
         {title}
       </div>
-      <div className={cx("description")} ref={descRef}>
+      <div
+        className={cx("description")}
+        ref={descRef}
+        HIDDEN={current ? undefined : "until-found"}
+      >
         {description}
       </div>
     </li>
