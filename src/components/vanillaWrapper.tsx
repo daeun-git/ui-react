@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 const VanillaWrapper = ({
-  title = "",
-  subTitle = "",
+  title = '',
+  subTitle = '',
   initiator,
 }: {
   title?: string;

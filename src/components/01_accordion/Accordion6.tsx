@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import cx from "./cx";
-import data from "./data";
+import { useEffect, useRef, useState } from 'react';
+import cx from './cx';
+import data from './data';
 
 const AccordionItem = ({
   id,
@@ -19,24 +19,19 @@ const AccordionItem = ({
 
   useEffect(() => {
     if (descRef.current) {
-      descRef.current.addEventListener("beforematch", toggle);
+      descRef.current.addEventListener('beforematch', toggle);
     }
     return () => {
-      if (descRef.current)
-        descRef.current.removeEventListener("beforematch", toggle);
+      if (descRef.current) descRef.current.removeEventListener('beforematch', toggle);
     };
   }, [toggle]);
 
   return (
-    <li className={cx("item", "item3", { current })} key={id}>
-      <div className={cx("tab")} onClick={toggle}>
+    <li className={cx('item', 'item3', { current })} key={id}>
+      <div className={cx('tab')} onClick={toggle}>
         {title}
       </div>
-      <div
-        className={cx("description")}
-        ref={descRef}
-        HIDDEN={current ? undefined : "until-found"}
-      >
+      <div className={cx('description')} ref={descRef} HIDDEN={current ? undefined : 'until-found'}>
         {description}
       </div>
     </li>
@@ -54,14 +49,9 @@ const Accordion6 = () => {
       <h3>
         #6. React<sub>ctrl+F 검색 가능</sub>
       </h3>
-      <ul className={cx("container")}>
+      <ul className={cx('container')}>
         {data.map((d, i) => (
-          <AccordionItem
-            {...d}
-            key={d.id}
-            current={currentId === d.id}
-            toggle={toggleItem(d.id)}
-          />
+          <AccordionItem {...d} key={d.id} current={currentId === d.id} toggle={toggleItem(d.id)} />
         ))}
       </ul>
     </>

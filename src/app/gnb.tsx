@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   ChildRoute,
@@ -8,15 +8,15 @@ import {
   gnbRootList,
   isParentRoute,
   routes,
-} from "@/routes";
-import classNames from "classnames";
-import Link from "next/link";
-import { useParams } from "next/navigation";
+} from '@/routes';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const Gnb = () => {
   const { item = [] } = useParams();
   const itemArr = item as string[];
-  const currentPath = ["", ...itemArr].join("/") as ROUTE_PATH;
+  const currentPath = ['', ...itemArr].join('/') as ROUTE_PATH;
 
   return (
     <aside>
@@ -34,15 +34,8 @@ const Gnb = () => {
   );
 };
 
-const GnbItem = ({
-  route,
-  currentPath,
-}: {
-  route: ROUTE;
-  currentPath: ROUTE_PATH;
-}) => {
-  if (isParentRoute(route))
-    return <ParentGnbItem route={route} currentPath={currentPath} />;
+const GnbItem = ({ route, currentPath }: { route: ROUTE; currentPath: ROUTE_PATH }) => {
+  if (isParentRoute(route)) return <ParentGnbItem route={route} currentPath={currentPath} />;
   return <ChildGnbItem route={route} currentPath={currentPath} />;
 };
 
@@ -55,14 +48,12 @@ const ParentGnbItem = ({
 }) => {
   const open = children.includes(currentPath);
   return (
-    <li className={classNames("parent", `items-${children.length}`, { open })}>
+    <li className={classNames('parent', `items-${children.length}`, { open })}>
       <Link href={link}>{name}</Link>
       <ul className="subRoutes">
         {children.map((r) => {
           const route = routes[r];
-          return (
-            <GnbItem route={route} currentPath={currentPath} key={route.key} />
-          );
+          return <GnbItem route={route} currentPath={currentPath} key={route.key} />;
         })}
       </ul>
     </li>

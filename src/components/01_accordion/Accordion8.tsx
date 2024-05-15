@@ -1,6 +1,6 @@
-import data from "./data";
-import cx from "./cx";
-import { useEffect, useRef } from "react";
+import data from './data';
+import cx from './cx';
+import { useEffect, useRef } from 'react';
 
 const AccordionItem = ({
   title,
@@ -17,18 +17,17 @@ const AccordionItem = ({
     const open = () => descRef.current?.open;
 
     if (descRef.current) {
-      descRef.current.addEventListener("beforematch", open);
+      descRef.current.addEventListener('beforematch', open);
     }
     return () => {
-      if (descRef.current)
-        descRef.current.removeEventListener("beforematch", open);
+      if (descRef.current) descRef.current.removeEventListener('beforematch', open);
     };
   }, [open]);
 
   return (
-    <details name="test" className={cx("item7")} ref={descRef}>
+    <details name="test" className={cx('item7')} ref={descRef}>
       <summary>{title}</summary>
-      <div className={cx("description")}>{description}</div>
+      <div className={cx('description')}>{description}</div>
     </details>
   );
 };
@@ -40,7 +39,7 @@ const Accordion8 = () => {
         #8. React
         <sub>아코디언 + 검색가능 (details태그)</sub>
       </h3>
-      <ul className={cx("container")}>
+      <ul className={cx('container')}>
         {data.map((d, i) => (
           <AccordionItem {...d} key={d.id} open={i === 0} />
         ))}

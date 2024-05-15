@@ -1,6 +1,6 @@
-import Accordions from "./components/01_accordion";
+import Accordions from './components/01_accordion';
 
-export const routePaths = ["/", "/accordion"] as const;
+export const routePaths = ['/', '/accordion'] as const;
 export type ROUTE_PATH = (typeof routePaths)[number];
 
 type BaseRoute = {
@@ -17,23 +17,20 @@ export type ChildRoute = BaseRoute & {
 export type ROUTE = ParentRoute | ChildRoute;
 
 export const routes: Record<ROUTE_PATH, ROUTE> = {
-  "/": {
-    key: "/",
-    link: "/",
-    name: "root",
-    children: ["/accordion"],
+  '/': {
+    key: '/',
+    link: '/',
+    name: 'root',
+    children: ['/accordion'],
   },
-  "/accordion": {
-    key: "/accordion",
-    link: "/accordion",
-    name: "01. 아코디언",
+  '/accordion': {
+    key: '/accordion',
+    link: '/accordion',
+    name: '01. 아코디언',
     children: Accordions,
   },
 };
 
-export const isParentRoute = (route: ROUTE): route is ParentRoute =>
-  Array.isArray(route.children);
+export const isParentRoute = (route: ROUTE): route is ParentRoute => Array.isArray(route.children);
 
-export const gnbRootList = (routes["/"] as ParentRoute).children.map(
-  (r) => routes[r]
-);
+export const gnbRootList = (routes['/'] as ParentRoute).children.map((r) => routes[r]);

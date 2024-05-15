@@ -1,5 +1,5 @@
-import cx from './cx'
-import data from './data'
+import cx from './cx';
+import data from './data';
 
 const AccordionItem = ({
   id,
@@ -7,10 +7,10 @@ const AccordionItem = ({
   description,
   initialChecked,
 }: {
-  id: string
-  title: string
-  description: string
-  initialChecked: boolean
+  id: string;
+  title: string;
+  description: string;
+  initialChecked: boolean;
 }) => {
   return (
     <li className={cx('item', 'item5')} key={id}>
@@ -26,8 +26,8 @@ const AccordionItem = ({
       </label>
       <div className={cx('description')}>{description}</div>
     </li>
-  )
-}
+  );
+};
 
 const Accordion5 = () => {
   return (
@@ -41,7 +41,7 @@ const Accordion5 = () => {
         ))}
       </ul>
     </>
-  )
-}
+  );
+};
 
-export default Accordion5
+export default Accordion5;
